@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Library {
+            constructor() {
+                this.books = [];
+            }
+
+            // aaddd book methode
+            addBook(book) {
+                this.books.push(book);
+                console.log(`${book.name} note added to the library.`);
+            }
+
+            // remove book methode
+            removeBook(bookTitle) {
+                const index = this.books.findIndex(book => book.name === bookTitle);
+                if (index !== -1) {
+                    const removedBook = this.books.splice(index, 1)[0];
+                    console.log(`${removedBook.name} not removed from the library.`);
+                } else {
+                    console.log(`Book with title  not found in the library.`);
+                }
+            }
+
+            // Method to display all books in the library
+            displayBooks() {
+                console.log("Books currently in the library:");
+                this.books.forEach(book => console.log(book.name));
+            }
+        }
+
+        // book class definig
+        class Book {
+            constructor(name, authority) {
+                this.name = name;
+                this.authority = authority;
+            }
+        }
+
+        
+        const myLibrary = new Library();
+
+        const book1 = new Book("english");
+        const book2 = new Book("gujrati");
+
+        myLibrary.addBook(book1);
+        myLibrary.addBook(book2);
+        myLibrary.displayBooks();
+
+        myLibrary.removeBook("english");
+        myLibrary.displayBooks();
+
+    </script>
+</body>
+
+</html>

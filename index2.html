@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Table</title>
+    <style>
+
+    /* youtube help making this code */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div id="tableContainer"></div>
+
+    <script>
+        let data = [
+            {
+                name: "jay",
+                email: "jay@gmail.com",
+                phone: "12345",
+            },
+            {
+                name: "ajay",
+                email: "ajay@gmail.com",
+                phone: "12345",
+            },
+            {
+                name: "vijay",
+                email: "vijay@gmail.com",
+                phone: "12345",
+            },
+            {
+                name: "ashish",
+                email: "ashish@gmail.com",
+                phone: "12345",
+            },
+        ];
+
+        function createTable(data) {
+            let table = document.createElement('table');
+            let thead = document.createElement('thead');
+            let tbody = document.createElement('tbody');
+            let headerRow = document.createElement('tr');
+
+           
+            for (let key in data[0]) {
+                let th = document.createElement('th');
+                th.textContent = key.toUpperCase();
+                headerRow.appendChild(th);
+            }
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+
+           
+            data.forEach(item => {
+                let row = document.createElement('tr');
+                for (let key in item) {
+                    let cell = document.createElement('td');
+                    cell.textContent = item[key];
+                    row.appendChild(cell);
+                }
+                tbody.appendChild(row);
+            });
+            table.appendChild(tbody);
+
+            return table;
+        }
+
+        let tableContainer = document.getElementById('tableContainer');
+        tableContainer.appendChild(createTable(data));
+    </script>
+</body>
+</html>
